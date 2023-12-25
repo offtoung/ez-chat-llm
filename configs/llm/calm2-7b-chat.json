@@ -1,0 +1,18 @@
+{
+"model_id": "TheBloke/calm2-7B-chat-GPTQ",
+"model_name": "calm2-7B-chat-GPTQ",
+"tokenizer_id": "cyberagent/calm2-7b-chat",
+"use_fast_tokenizer": false,
+"is_gptq": true,
+"use_safetensors": true,
+"load_in_4bit": false,
+"generation_configs": {"max_new_tokens": 300, 
+                       "min_length": 50,
+                       "do_sample": true,
+                       "top_k": 0,
+                       "top_p": 0.85,
+                       "repetition_penalty": 1.1, 
+                       "temperature": 1.0},
+"template_example": "システムプロンプトUSER: ユーザ発言1\nASSISTANT: アシスタント発言1\nUSER: ユーザ発言2\nASSISTANT: アシスタント発言2",
+"system_prompt": ""
+}

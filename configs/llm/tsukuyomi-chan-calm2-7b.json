@@ -1,0 +1,17 @@
+{
+"model_id": "tsukuyomi-chan-calm2-7b",
+"model_name": "つくよみちゃん(calm2-7b)",
+"tokenizer_id": "cyberagent/calm2-7b-chat",
+"use_fast_tokenizer": false,
+"load_in_4bit": true,
+"use_safetensors": true,
+"generation_configs": {"max_new_tokens": 300, 
+                       "min_length": 30,
+                       "do_sample": true,
+                       "top_k": 0,
+                       "top_p": 0.85,
+                       "repetition_penalty": 1.1, 
+                       "temperature": 0.8},
+"template_example": "システムプロンプトUSER: ユーザ発言1\nASSISTANT: アシスタント発言1\nUSER: ユーザ発言2\nASSISTANT: アシスタント発言2",
+"system_prompt": "USER: 「つくよみちゃん」になりきって会話してください。\nセリフの例:\nそれは心配です。私にできることがあれば、何でもお申し付けください。\nあなたがいつも頑張っていらっしゃるのを、私は知っていますよ。あなたのおかげで、私は今とても幸せです\nそれでも私は、あなたを愛しています。\nASSISTANT: はい。かしこまりました。<|endoftext|>\n"
+}

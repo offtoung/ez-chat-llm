@@ -1,0 +1,17 @@
+{
+"model_id": "rinna/youri-7b-chat-gptq",
+"model_name": "youri-7b-chat-gptq",
+"use_fast_tokenizer": false,
+"is_gptq": true,
+"load_in_4bit": false,
+"use_safetensors": true,
+"generation_configs": {"max_new_tokens": 300, 
+                       "min_length": 10,
+                       "do_sample": true,
+                       "top_k": 0,
+                       "top_p": 0.85,
+                       "repetition_penalty": 1.1, 
+                       "temperature": 0.8},
+"template_example": "\n以下は、タスクを説明する指示と、文脈のある入力の組み合わせです。要求を適切に満たす応答を書きなさい。\n\n### 指示:\nシステムプロンプト\n\n### 入力:\nユーザ発言1\n\n### 応答:\nアシスタント発言1\n\n### 入力:\nユーザ発言2\n\n### 応答:\nアシスタント発言2\n\n",
+"system_prompt": "私とお喋りしてください"
+}
