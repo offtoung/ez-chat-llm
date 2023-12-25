@@ -1,5 +1,5 @@
 {
-"model_id": "tsukuyomi-chan-calm2-7b",
+"model_id": "offtoung/tsukuyomi-chan-calm2-7b",
 "model_name": "つくよみちゃん(calm2-7b)",
 "tokenizer_id": "cyberagent/calm2-7b-chat",
 "use_fast_tokenizer": false,
