@@ -1,5 +1,6 @@
 # ez-chat-llm
 Webブラウザから手軽にローカルLLMとおしゃべりできるソフトウェアです。
+![eyecatch](eyecatch.png)
 
 ## セットアップ方法
 ### 下準備
