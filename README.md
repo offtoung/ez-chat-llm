@@ -18,7 +18,7 @@ conda activate ezllm
 ```
 git clone https://github.com/offtoung/ez-chat-llm.git
 cd ez-chat-llm
-pip install transformers bitsandbytes pyopenjtalk gradio scipy
+pip install transformers bitsandbytes accelerate pyopenjtalk gradio scipy
 ```
 
 ## 本ソフトウェアの起動方法
