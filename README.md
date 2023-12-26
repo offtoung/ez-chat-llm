@@ -53,6 +53,7 @@ http://localhost:7860
 ## ライセンス
 + 本リポジトリのコード自体はMITライセンスで利用できます。
   - modules/ezllm/\_\_init\_\_.py には MITライセンスで配布されている ttslearn (https://github.com/r9y9/ttslearn) のコードを一部含みます。
+  - 埋め込みモデルである [Multilingual-E5-large](https://huggingface.co/intfloat/multilingual-e5-large) を内部で利用しています。
 + 対話モデルならびに音声合成モデルのライセンスについては、下記を参照してください。
 ### 対話モデル
 |モデル名|URL1|URL2|ライセンス|
