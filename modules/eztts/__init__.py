@@ -106,6 +106,11 @@ class ezttsConfig():
     self.model_id = config_dict["model_id"]
 
     try:
+      self.speaker_id = config_dict["speaker_id"]
+    except:
+      self.speaker_id = None
+
+    try:
       self.model_name = config_dict["model_name"]
     except:
       self.model_name = self.model_id
@@ -119,6 +124,7 @@ class ezttsModel():
     self.tokenizer = ezVitsTokenizer.from_pretrained(self.config.model_id)
     self.model = VitsModel.from_pretrained(self.config.model_id).to(self.device)
     self.sampling_rate = self.model.config.sampling_rate
+    self.speaker_id = self.config.speaker_id
 
   def tts(self, text, speaker_id=0):
     text = re.sub("？", "?", text)

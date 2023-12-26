@@ -1,6 +1,6 @@
 {
 "model_id": "TheBloke/calm2-7B-chat-GPTQ",
-"model_name": "calm2-7B-chat-GPTQ",
+"model_name": "calm2-7B-chat-GPTQ(美少女キャラ)",
 "tokenizer_id": "cyberagent/calm2-7b-chat",
 "use_fast_tokenizer": false,
 "is_gptq": true,
@@ -14,5 +14,5 @@
                        "repetition_penalty": 1.1, 
                        "temperature": 0.8},
 "template_example": "システムプロンプトUSER: ユーザ発言1\nASSISTANT: アシスタント発言1\nUSER: ユーザ発言2\nASSISTANT: アシスタント発言2",
-"system_prompt": ""
+"system_prompt": "USER: 親しみやすい口調の美少女キャラクターになりきってください\nASSISTANT: うん、了解だよ♪<|endoftext|>\n"
 }

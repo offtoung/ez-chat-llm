@@ -38,34 +38,12 @@ voice_candidates = sorted([ezttsConfig(voice_conf_dir+x).model_name for x in voi
 voice_candidate_dict = {ezttsConfig(voice_conf_dir+x).model_name: voice_conf_dir+x for x in voice_conffiles}
 
 emo = emotionManager("./configs/emotion/emotions.json")
-current_emotion = emo.emotions_dict['基本']
 changed_figure = True
+eye_state = "openEyes"
 playing_audio = False
 generating = False
 
-eye_state = "openEyes"
-blink_timer = 1
-blink_resolution = 0.1
-
-def updateFigure():
-  fig = current_emotion[eye_state]
-  return fig
-
-def updateEyeState():
-  global eye_state
-  global blink_timer
-  if eye_state == "openEyes":
-    blink_timer -= blink_resolution
-
-    if blink_timer < 0:
-      eye_state = "closedEyes" 
-      blink_timer = blink_resolution
-
-  else: 
-    eye_state = "openEyes"
-    blink_timer = np.random.exponential(scale=3.0)
-
-  return eye_state
+default_figure = emo.emotions_dict["基本"][eye_state]
 
 def reloadVoiceModel(model_name, progress=gr.Progress()):
   global tts_model
@@ -87,33 +65,74 @@ def reloadLLM(model_name, progress=gr.Progress()):
 
 def generateVoice(text):
   wav = tts_model.tts(text)
-
   return tts_model.sampling_rate, wav
 
-def sendMessage(text, output_text, chat_history):
+def sendMessage(text, output_text, chat_history, emotion):
   global generating
-  global current_emotion
+  global playing_audio
 
   if generating:
-    return output_text, chat_history
+    return output_text, chat_history, emotion
   else:
+    chat_history_arr.append([text, "..."])
+    yield output_text, chat_history_arr, emotion
+    new_emotion = emotion
     response_text = ""
     buff = ""
     generating = True
+    playing_audio = False
     
     response_text = ""
+    buff = ""
+    out_text = ""
+    prev_out_text = ""
+
     for new_text in llm.chat(text):
       new_text = re.sub("\?", "？", new_text)
       new_text = re.sub("\!", "！", new_text)
       new_text = new_text.strip()
 
       response_text += new_text
+      buff += new_text
 
-    chat_history_arr.append([text, response_text])
-    current_emotion = emo.get_emotion(response_text)
+      splitted = re.split(r"(\n|。)", buff)
+      if len(splitted) >= 3:
+        out_text += "".join(splitted[:2])
+        buff = "".join(splitted[2:])
+        chat_history_arr[-1] = [text, response_text]
+
+        if playing_audio:
+          yield prev_out_text, chat_history_arr, new_emotion
+        else:
+          new_emotion = emo.get_emotion(response_text)
+          playing_audio = True
+          yield out_text, chat_history_arr, new_emotion
+          prev_out_text = out_text
+          out_text = ""
+
+    chat_history_arr[-1] = [text, response_text]
+    if len(buff) > 0:
+      out_text += buff
+
+    if playing_audio:
+      yield prev_out_text, chat_history_arr, new_emotion
+
+    timer = 0
+    if len(response_text) > 30:
+       new_emotion = emo.get_emotion(response_text[:30])
+    else:
+      new_emotion = emo.get_emotion(response_text)
+    if len(out_text) > 0:
+      while playing_audio:
+        timer += 0.01
+        time.sleep(0.01)
+        if timer > 60:
+          break
+
+      playing_audio = True
+      yield out_text, chat_history_arr, new_emotion
+
     generating = False
-
-    return response_text, chat_history_arr
 
 def revertChat():
   global llm
@@ -138,15 +157,19 @@ def resetChat():
   return chat_history_arr
 
 def refreshInput(text):
-  if generating or playing_audio:
+  if generating:
     return text, text
   else:
     return "", text
 
+def stoppedVoice():
+  global playing_audio
+  playing_audio = False
+
 def prepareGUI():
   with gr.Blocks(css=styles.global_css()) as demo:
     with gr.Row(elem_id="main_screen"):
-      figure = gr.Image(updateFigure, scale=1, show_download_button=False, container=False, every=blink_resolution, elem_id="figure")
+      figure = gr.HTML(styles.figureHTML(default_figure))
       chat_history = gr.Chatbot([], container=False, min_width=50, scale=3, layout='bubble', elem_id="chat_history", bubble_full_width=False)
       with gr.Column(scale=1, min_width=50):
         llm_selector = gr.Dropdown(choices=llm_candidates, value=default_llm_select, elem_id="menu", label="対話モデル", interactive=True)
@@ -156,7 +179,6 @@ def prepareGUI():
 
     with gr.Row(equal_height=True):
       with gr.Column(scale=10, min_width=80):
-        #input_textbox = gr.Textbox("", container=True, label="Shift+Enter で改行", autofocus=True, elem_id="input_textbox")
         input_textbox = gr.Textbox("", container=True, label="Shift+Enter で改行", autofocus=False, elem_id="input_textbox")
       with gr.Column(scale=1, min_width=80):
         submit_btn = gr.Button(value="送信", elem_id="submit_button")
@@ -168,27 +190,27 @@ def prepareGUI():
 
     input_text_dummy = gr.Textbox("", visible=False, container=False)
     output_text = gr.Textbox("", visible=False, container=False)
-    eye_state = gr.Textbox(updateEyeState, visible=False, container=False, every=0.1)
+    eye_state = gr.Textbox("eyesOpen", visible=False, container=False)
+    current_emotion = gr.Textbox("基本", visible=False, container=False)
 
     submit_btn.click(
         fn=refreshInput, inputs=[input_textbox], outputs=[input_textbox, input_text_dummy], show_progress=False
     ).then(
-        fn=sendMessage, inputs=[input_text_dummy, output_text, chat_history], outputs=[output_text, chat_history], show_progress=False
-    ).then(
-        fn=generateVoice, inputs=[output_text], outputs=[voice], show_progress=False
+        fn=sendMessage, inputs=[input_text_dummy, output_text, chat_history, current_emotion], outputs=[output_text, chat_history, current_emotion], show_progress=False
     ).then( 
         fn=None, js=focus_js
     )
 
+
     input_textbox.submit(
         fn=refreshInput, inputs=[input_textbox], outputs=[input_textbox, input_text_dummy], show_progress=False
     ).then(
-        fn=sendMessage, inputs=[input_text_dummy, output_text, chat_history], outputs=[output_text, chat_history], show_progress=False
-    ).then(
-      fn=generateVoice, inputs=[output_text], outputs=[voice], show_progress=False
+        fn=sendMessage, inputs=[input_text_dummy, output_text, chat_history, current_emotion], outputs=[output_text, chat_history, current_emotion], show_progress=False
     ).then( 
         fn=None, js=focus_js
     )
+
+    output_text.change(fn=generateVoice, inputs=[output_text], outputs=[voice], show_progress=False).then(fn=None, js=styles.updateEmotion_js(), inputs=[current_emotion], show_progress=False)
 
     llm_selector.change(fn=reloadLLM, inputs=[llm_selector], outputs=[llm_selector]).then(fn=None, js=focus_js)
 
@@ -197,12 +219,17 @@ def prepareGUI():
     revert_btn.click(fn=revertChat, inputs=None, outputs=[chat_history]).then(fn=None, js=focus_js)
     reset_btn.click(fn=resetChat, inputs=None, outputs=[chat_history]).then(fn=None, js=focus_js)
 
+    voice.stop(fn=stoppedVoice)
+
+    demo.load(None,None,None,js=styles.global_js())
+
   demo.queue()
   return demo
 
 if __name__ == '__main__':
   demo = prepareGUI()
-  demo.launch(server_name="0.0.0.0", prevent_thread_lock=True, show_error=True)
+
+  demo.launch(server_name="0.0.0.0", allowed_paths=["figures", "configs/emotion"], prevent_thread_lock=True, show_error=True)
 
   try:
     print("")

@@ -41,4 +41,4 @@ class emotionManager():
 
   def get_emotion(self, text):
     argmax_idx = self.get_similarity(text)
-    return self.emotions_dict[self.emotions[argmax_idx]]
+    return self.emotions[argmax_idx]

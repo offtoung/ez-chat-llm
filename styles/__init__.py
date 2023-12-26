@@ -18,3 +18,47 @@ class pageStyle:
     css += "\n" + "#main_screen { background-image: repeating-linear-gradient(45deg, mycolor1 25%, transparent 25%, transparent 75%, mycolor1 75%, mycolor1), repeating-linear-gradient(45deg, mycolor1 25%, mycolor2 25%, mycolor2 75%, mycolor1 75%, mycolor1); background-size: 60px 60px; background-position: 0 0, 30px 30px; background-color: mycolor2; }".replace("mycolor1", mycolor1).replace("mycolor2", mycolor2)
 
     return css
+
+  def global_js(self):
+    return '''async () => {
+              res = await fetch("/file=configs/emotion/emotions.json");
+              res_json = await res.json();
+              globalThis.emo_dic = res_json;
+              globalThis.eyeState = "openEyes";
+              globalThis.currentEmotion = "基本";
+
+              console.log(globalThis.currentEmotion); 
+              console.log(globalThis.eyeState); 
+
+              globalThis.updateFigure = () => {
+                    document.getElementById("figure").src = "/file="+globalThis.emo_dic[globalThis.currentEmotion][globalThis.eyeState];
+              }
+
+              globalThis.Blink = () => {
+                if(globalThis.eyeState == "openEyes"){
+                  globalThis.eyeState = "closedEyes"
+                  globalThis.updateFigure()
+
+                  setTimeout(globalThis.Blink, 100) 
+                }else{
+                  globalThis.eyeState = "openEyes"
+                  globalThis.updateFigure()
+
+                  let blinkInterval = 2000.0*Math.exp(Math.sqrt(-2.0*Math.log( 1-Math.random() ))*Math.cos( 2.0*Math.PI*Math.random() ))
+                  setTimeout(globalThis.Blink, blinkInterval)
+                }
+
+              }
+              setTimeout(globalThis.Blink, 500)
+            }
+           '''
+
+  def figureHTML(self, figure_path):
+    return '''<img id="figure" src="/file={0}">'''.format(figure_path)
+
+  def updateEmotion_js(self):
+    return '''(emotion) => {
+                  globalThis.currentEmotion = emotion;
+                  globalThis.updateFigure();
+                }
+           '''
