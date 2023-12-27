@@ -78,9 +78,11 @@ https://tyc.rei-yumesaki.net/material/kaiwa-ai/
 |ELYZA-japanese-Llama-2-7b-fast-instruct|https://huggingface.co/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct||LLAMA 2 Community License|
 |youri-7b-chat-gptq|https://huggingface.co/rinna/youri-7b-chat-gptq||LLAMA 2 Community License|
 
-(※1) 会話AIの動作画面等のスクリーンショット・キャプチャ動画の投稿、および会話AIから生成された会話を元ネタとする作品を公開する場合は、**「会話AIの名称とつくよみちゃんの名前をクレジットすること」が必須**です。また、会話AIから生成された会話を素材として配布、会話AIから生成された会話を使用して新たな会話AIを作成、あるいは会話AIの改変・再配布を行う場合、[つくよみちゃん会話AI育成計画の利用規約](https://tyc.rei-yumesaki.net/material/kaiwa-ai)に従う必要があります。
+(※1) 会話AIの動作画面等のスクリーンショット・キャプチャ動画の投稿、および会話AIから生成された会話を元ネタとする作品を公開する場合は、**「本ソフトウェアの名称 (ez-chat-llm) とつくよみちゃんの名前をクレジットすること」が必須**です。また、会話AIから生成された会話を素材として配布、会話AIから生成された会話を使用して新たな会話AIを作成、あるいは会話AIの改変・再配布を行う場合、[つくよみちゃん会話AI育成計画の利用規約](https://tyc.rei-yumesaki.net/material/kaiwa-ai)に従う必要があります。
 
 ### 音声モデル
+
+音声モデルから生成された音声を用いた動画等を公開する場合は、**「本ソフトウェアの名称 (ez-chat-llm) と音声モデル名をクレジットすること」が必須**です。
 |モデル名|URL1|URL2|ライセンス|
 |:---|:---|:---|:---|
 |つくよみちゃん|https://huggingface.co/offtoung/tsukuyomi-chan-vits|https://tyc.rei-yumesaki.net/material/corpus/#terms3|[つくよみちゃんキャラクターライセンス](https://tyc.rei-yumesaki.net/about/terms)＋[つくよみちゃんコーパスライセンス(※1)](https://tyc.rei-yumesaki.net/material/corpus/#terms3)|
