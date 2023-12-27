@@ -1,5 +1,5 @@
 # ez-chat-llm
-Webブラウザから手軽にローカルLLMとおしゃべりできるソフトウェアです。
+Webブラウザから手軽にローカルLLMとおしゃべりできるソフトウェアです。([イラスト素材：花兎*様](https://tyc.rei-yumesaki.net/material/illust))
 ![eyecatch](eyecatch.png)
 
 ## セットアップ方法
@@ -60,19 +60,39 @@ python tts.py
 + 本リポジトリのコード自体はMITライセンスで利用できます。
   - modules/ezllm/\_\_init\_\_.py には MITライセンスで配布されている ttslearn (https://github.com/r9y9/ttslearn) のコードを一部含みます。
   - 埋め込みモデルである [Multilingual-E5-large](https://huggingface.co/intfloat/multilingual-e5-large) を内部で利用しています。
-+ 対話モデルならびに音声合成モデルのライセンスについては、下記を参照してください。
++ 対話モデル、音声合成モデル、ならびに同梱している立ち絵のライセンスについては、下記を参照してください。
 ### 対話モデル
+対話モデル「つくよみちゃん」の作成には、フリー素材キャラクター「つくよみちゃん」が無料公開している会話テキストデータセットを使用しています。
+
+■つくよみちゃん会話AI育成計画 © Rei Yumesaki
+
+https://tyc.rei-yumesaki.net/material/kaiwa-ai/
+
+その他のモデルについては、Hugging Face Hub で公開されているものを参照しています。
+
 |モデル名|URL1|URL2|ライセンス|
 |:---|:---|:---|:---|
-|つくよみちゃん(calm2-7b)|https://huggingface.co/offtoung/tsukuyomi-chan-calm2-7b|https://tyc.rei-yumesaki.net/about/project/|[つくよみちゃんキャラクターライセンス](https://tyc.rei-yumesaki.net/about/terms)|
+|つくよみちゃん(calm2-7b)|https://huggingface.co/offtoung/tsukuyomi-chan-calm2-7b|https://tyc.rei-yumesaki.net/material/kaiwa-ai|[つくよみちゃんキャラクターライセンス](https://tyc.rei-yumesaki.net/about/terms)＋[つくよみちゃん会話AI育成計画ライセンス (※1)](https://tyc.rei-yumesaki.net/material/kaiwa-ai)|
 |calm2-7b-chat-GPTQ|https://huggingface.co/cyberagent/calm2-7b-chat|https://huggingface.co/TheBloke/calm2-7B-chat-GPTQ|Apache-2.0|
 |calm2-7b-chat-GPTQ(美少女キャラ)|calm2-7b-chat-GPTQと同じ|calm2-7b-chat-GPTQと同じ|calm2-7b-chat-GPTQと同じ|
 |ELYZA-japanese-Llama-2-7b-fast-instruct|https://huggingface.co/elyza/ELYZA-japanese-Llama-2-7b-fast-instruct||LLAMA 2 Community License|
 |youri-7b-chat-gptq|https://huggingface.co/rinna/youri-7b-chat-gptq||LLAMA 2 Community License|
 
+(※1) 会話AIの動作画面等のスクリーンショット・キャプチャ動画の投稿、および会話AIから生成された会話を元ネタとする作品を公開する場合は、**「会話AIの名称とつくよみちゃんの名前をクレジットすること」が必須**です。また、会話AIから生成された会話を素材として配布、会話AIから生成された会話を使用して新たな会話AIを作成、あるいは会話AIの改変・再配布を行う場合、[つくよみちゃん会話AI育成計画の利用規約](https://tyc.rei-yumesaki.net/material/kaiwa-ai)に従う必要があります。
+
 ### 音声モデル
 |モデル名|URL1|URL2|ライセンス|
 |:---|:---|:---|:---|
-|つくよみちゃん|https://huggingface.co/offtoung/tsukuyomi-chan-vits|https://tyc.rei-yumesaki.net/about/project/|[つくよみちゃんキャラクターライセンス](https://tyc.rei-yumesaki.net/about/terms)|
-|ルナイトネイル|https://huggingface.co/offtoung/runaitoneiru-vits|https://runaitoneiru.fanbox.cc/posts/3786422|[ルナイトネイルITAコーパス利用規約](https://runaitoneiru.fanbox.cc/posts/3786422)|
-|黄琴海月(ひそひそ)|https://huggingface.co/offtoung/kikoto-kurage-hisohiso-vits|https://kikyohiroto1227.wixsite.com/kikoto-utau|[黄琴海月ITAコーパス利用規約](https://kikyohiroto1227.wixsite.com/kikoto-utau/ter%EF%BD%8Ds-of-service)
+|つくよみちゃん|https://huggingface.co/offtoung/tsukuyomi-chan-vits|https://tyc.rei-yumesaki.net/material/corpus/#terms3|[つくよみちゃんキャラクターライセンス](https://tyc.rei-yumesaki.net/about/terms)＋[つくよみちゃんコーパスライセンス(※1)](https://tyc.rei-yumesaki.net/material/corpus/#terms3)|
+|ルナイトネイル|https://huggingface.co/offtoung/runaitoneiru-vits|https://runaitoneiru.fanbox.cc/posts/3786422|[ルナイトネイルITAコーパス利用規約(※2)](https://runaitoneiru.fanbox.cc/posts/3786422)|
+|黄琴海月(ひそひそ)|https://huggingface.co/offtoung/kikoto-kurage-hisohiso-vits|https://kikyohiroto1227.wixsite.com/kikoto-utau|[黄琴海月ITAコーパス利用規約(※3)](https://kikyohiroto1227.wixsite.com/kikoto-utau/ter%EF%BD%8Ds-of-service)
+
+(※1)音声合成モデルの改変・再配布を行う場合は、[つくよみちゃんコーパスの利用規約](https://tyc.rei-yumesaki.net/material/corpus/#terms3)に従うことが必須です。
+
+(※2)音声合成モデルの改変・再配布を行う場合は、[ルナイトネイルITAコーパス利用規約](https://runaitoneiru.fanbox.cc/posts/3786422)に従うことが必須です。
+
+(※3)音声合成モデルの改変・再配布を行う場合は、[黄琴海月ITAコーパス利用規約](https://kikyohiroto1227.wixsite.com/kikoto-utau/ter%EF%BD%8Ds-of-service)に従うことが必須です。
+
+### 立ち絵
+同梱している立ち絵は、[花兎*様が制作された、つくよみちゃん万能立ち絵素材](https://tyc.rei-yumesaki.net/material/illust/)を改変したものです。この立ち絵はソフトウェアへ組み込んで公開することは許可されていますが、再配布は禁止されています。そのため、この立ち絵の改変や転用を行いたい方は、[元の配布場所](https://tyc.rei-yumesaki.net/material/illust/)から入手いただく必要があります。
+詳しい利用規約については https://tyc.rei-yumesaki.net/material/illust/#toc3 をご参照ください。
