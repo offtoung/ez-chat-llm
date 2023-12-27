@@ -97,4 +97,4 @@ https://tyc.rei-yumesaki.net/material/kaiwa-ai/
 
 ### 立ち絵
 同梱している立ち絵は、[花兎*様が制作された、つくよみちゃん万能立ち絵素材](https://tyc.rei-yumesaki.net/material/illust/)を改変したものです。この立ち絵はソフトウェアへ組み込んで公開することは許可されていますが、再配布は禁止されています。そのため、この立ち絵の改変や転用を行いたい方は、[元の配布場所](https://tyc.rei-yumesaki.net/material/illust/)から入手いただく必要があります。
-詳しい利用規約については https://tyc.rei-yumesaki.net/material/illust/#toc3 をご参照ください。
+詳しい利用規約については https://tyc.rei-yumesaki.net/material/illust/ をご参照ください。
