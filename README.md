@@ -85,11 +85,11 @@ https://tyc.rei-yumesaki.net/material/kaiwa-ai/
 音声モデルから生成された音声を用いた動画等を公開する場合は、**「本ソフトウェアの名称 (ez-chat-llm) と音声モデル名をクレジットすること」が必須**です。
 |モデル名|URL1|URL2|ライセンス|
 |:---|:---|:---|:---|
-|つくよみちゃん|https://huggingface.co/offtoung/tsukuyomi-chan-vits|https://tyc.rei-yumesaki.net/material/corpus/#terms3|[つくよみちゃんキャラクターライセンス](https://tyc.rei-yumesaki.net/about/terms)＋[つくよみちゃんコーパスライセンス(※1)](https://tyc.rei-yumesaki.net/material/corpus/#terms3)|
+|つくよみちゃん|https://huggingface.co/offtoung/tsukuyomi-chan-vits|https://tyc.rei-yumesaki.net/material/corpus/|[つくよみちゃんキャラクターライセンス](https://tyc.rei-yumesaki.net/about/terms)＋[つくよみちゃんコーパスライセンス(※1)](https://tyc.rei-yumesaki.net/material/corpus/)|
 |ルナイトネイル|https://huggingface.co/offtoung/runaitoneiru-vits|https://runaitoneiru.fanbox.cc/posts/3786422|[ルナイトネイルITAコーパス利用規約(※2)](https://runaitoneiru.fanbox.cc/posts/3786422)|
 |黄琴海月(ひそひそ)|https://huggingface.co/offtoung/kikoto-kurage-hisohiso-vits|https://kikyohiroto1227.wixsite.com/kikoto-utau|[黄琴海月ITAコーパス利用規約(※3)](https://kikyohiroto1227.wixsite.com/kikoto-utau/ter%EF%BD%8Ds-of-service)
 
-(※1)音声合成モデルの改変・再配布を行う場合は、[つくよみちゃんコーパスの利用規約](https://tyc.rei-yumesaki.net/material/corpus/#terms3)に従うことが必須です。
+(※1)音声合成モデルの改変・再配布を行う場合は、[つくよみちゃんコーパスの利用規約](https://tyc.rei-yumesaki.net/material/corpus/)に従うことが必須です。
 
 (※2)音声合成モデルの改変・再配布を行う場合は、[ルナイトネイルITAコーパス利用規約](https://runaitoneiru.fanbox.cc/posts/3786422)に従うことが必須です。
 
