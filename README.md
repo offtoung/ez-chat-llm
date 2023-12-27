@@ -1,5 +1,5 @@
 # ez-chat-llm
-Webブラウザから手軽にローカルLLMとおしゃべりできるソフトウェアです。([イラスト素材：花兎*様](https://tyc.rei-yumesaki.net/material/illust))
+Webブラウザから手軽にローカルLLMとおしゃべりできるソフトウェアです。([つくよみちゃんイラスト素材：花兎*様](https://tyc.rei-yumesaki.net/material/illust))
 ![eyecatch](eyecatch.png)
 
 ## セットアップ方法
