@@ -24,6 +24,18 @@ cd ez-chat-llm
 pip install transformers bitsandbytes accelerate pyopenjtalk gradio scipy
 ```
 
+### ※インストールがうまくいかない場合
+動作確認が取れている依存パッケージのバージョンが本リポジトリの environment.yml に列挙されています。上記でうまくいかない場合は、
+```
+conda deactivate
+conda remove -n ezllm --all
+```
+として、仮想環境を一旦削除し、
+```
+conda env create -f environment.yml 
+```
+をお試しください。
+
 ## 本ソフトウェアの起動方法
 main.py を実行すると、gradioのサーバが起動します。
 ```
