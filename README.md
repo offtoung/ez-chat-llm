@@ -2,6 +2,11 @@
 Webブラウザから手軽にローカルLLMとおしゃべりできるソフトウェアです。([つくよみちゃんイラスト素材：花兎*様](https://tyc.rei-yumesaki.net/material/illust))
 ![eyecatch](eyecatch.png)
 
+## はじめに
+本リポジトリについては、[解説記事](https://zenn.dev/offtoung/articles/034d98bd397527)をあわせてご覧ください。
+
+また、Google Colab Pro をお使いの方は、[こちらのノートブック](https://colab.research.google.com/drive/1LMLUNgGuV1ucEnqA1nDSKzMGs1SCMfus?usp=sharing)から、セットアップなしで手軽にお試しいただけます。
+
 ## セットアップ方法
 ### 下準備
 
