@@ -30,7 +30,7 @@ pip install transformers bitsandbytes accelerate pyopenjtalk gradio scipy
 ```
 
 ### ※インストールがうまくいかない場合
-動作確認が取れている依存パッケージのバージョンが本リポジトリの environment.yml に列挙されています。上記でうまくいかない場合は、
+Ubuntu 22.04.3 LTS において動作確認が取れている依存パッケージのバージョンが本リポジトリの environment.yml に列挙されています。上記でうまくいかない場合は、
 ```
 conda deactivate
 conda remove -n ezllm --all
