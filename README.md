@@ -4,6 +4,9 @@ Webブラウザから手軽にローカルLLMとおしゃべりできるソフ�
 
 ## セットアップ方法
 ### 下準備
+
+**※2023/12/28現在、Windows と Cuda 12.3 の組み合わせでは PyTorch が GPU の認識に失敗するようです。Windows ユーザの方は、[WSL2](https://learn.microsoft.com/ja-jp/windows/wsl/install)などの Ubuntu 仮想環境をインストールし、その仮想環境の中で下記の作業をしていただくのがおすすめです。**
+
 Anaconda 仮想環境の利用を推奨します。Anaconda は下記の URL からダウンロードできます。
 https://www.anaconda.com/download
 
